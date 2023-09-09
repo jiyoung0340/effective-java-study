@@ -215,8 +215,9 @@ float와 double은 NaN, -0.0f, 특수한 부동 소수 값 등을 다뤄야하�
 - 배열 필드는 원소 각각을 앞선의 지침대로 비교하되, 배열의 모든 원소가 핵심필드라면 Arrays.equals메서드들 중 하나를 사용하자.
 - null도 정상 값으로 취급하는 참조 타입 필드의 경우 Objects.equals(Object, Object)로 비교한다.
 NullPointerException을 예방할 수 있다.
-- 비교하기 복잡한 필드는 표준형을 저장한 후 표준형끼리 비교하는 것이 훨씬 경제적이다. (=> ? 예시가 있을까.. 감이 잘 오지 않는다.)
-- 필드를 비교할 때는 다를 가능성이 크거나 비교 비용이 싼 필드를 먼저 비교하자.
+- 비교하기 복잡한 필드는 표준형을 저장한 후 표준형끼리 비교하는 것이 훨씬 경제적이다. (=> ? 예시가 있을까.. 감이 잘 오지 않는다.)  
+*[표준형과 관련된 링크를 추가한다.(2023.09.09)](https://stackoverflow.com/questions/280107/what-does-the-term-canonical-form-or-canonical-representation-in-java-mean)*
+- 필드를 비교할 때는 다를 가능성이 크거나 비교 비용이 싼 필드를 먼저 비교하자. 
 
 
 ## equals 메서드를 구현할 때, 마지막 주의사항이다.
