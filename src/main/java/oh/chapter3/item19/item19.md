@@ -10,7 +10,7 @@
 _(*이때 '재정의 가능한'이란 public, protected메서드 중 final이 아닌 모든 메서드를 의미한다.)_
 
 **Implementation Requirements**  
-API 문서의 메서드 설명 끝에 보이는 문구로 이로 시작한 절은 그 메서드의 내부 동작 방식을 설명한다. (@impleSpec 태그를 붗여주면 자바독 도구가 생성해줌.)
+API 문서의 메서드 설명 끝에 보이는 문구로 이로 시작한 절은 그 메서드의 내부 동작 방식을 설명한다. (@impleSpec 태그를 붙여주면 자바독 도구가 생성해줌.)
 ```text
 public boolean remove(Object o)
 
