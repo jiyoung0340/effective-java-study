@@ -41,7 +41,7 @@ package-private 톱레벨 클래스나 인터페이스를 한 클래스에서만
 클래스의 공개 API를 설계한 후, 그 외의 모든 멤버는 private으로 만든다. 그 후, 같은 패키지, 다른 클래스가 접근해야 하는 멤버에 한해
 package-private으로 권한을 풀어준다.  
 이때 권한을 자주 풀어줘야한다면 시스템에서 컴포넌트를 더 분해할 것을 고려해본다.  
-private, package-private 멤버는 모두 해당 클래스의 구현에 해당되므로 보통 공개 API에 영향을 주지 않지만,
+private, package-private 멤버는 모두 해당 클래스의 구현에 해당되므로 보통 공개 API에 영향을 주지 않지만, (transient)
 Serializable을 구현한 클래스에서는 그 필드들도 의도치 않게 공개 API가 될 수도 있다.
 
 public클래스에서 멤버의 접근 수준을 package-private에서 protected로 바꾸는 순간 그 멤버에 접근 가능한 범위가 엄청나게 넓어진다.
