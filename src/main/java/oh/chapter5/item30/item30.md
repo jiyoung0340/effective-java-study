@@ -58,3 +58,42 @@ public static void main(String[] args) {
         System.out.println(sameNumber.apply(n));
 }
 ```
+
+## 재귀적 타입 한정
+
+드물게, 자기 자신이 들어간 표현식을 사용하여 타입 매개변수의 허용 범위를 한정할 수 있는데 이를 재귀적 타입 한정이라한다.   
+재귀적 타입 한정은 주로 타입의 자연적 순서를 정하는 Comparable 인터페이스와 함께 쓰인다. 
+
+```java
+public interface Comparable<T> {
+	int compareTo(T o);
+}
+```
+
+여기서 T는 Comparable&#60;T&#62;를 구현한 타입이 비교할 수 있는 원소의 타입을 정의한다. 실제로 거의 모든 타입은 자신과 같은 타입의 원소와만 비교할 수 있다. 
+즉, String은 Comparable&#60;String&#62;을 구현하고 Integer는 Comparable&#60;Integer&#62;를 구현한다는 것이다. 
+
+Comparable을 구현한 원소의 컬렉션을 입력받는 메서드들은 주로 정렬, 검색, 최댓/솟값을 구하는 식으로 사용되기때문에, 컬렉션에 담긴 모든 원소가 상호 비교될 수 있어야 한다. 
+
+```java
+public static <E extends Comparable<E>> E max(Collections<E> c);
+```
+
+&#60;E extends Comparable&#60;E&#62;&#62;는 "모든 타입 E는 자신과 비교할 수 있다"라는 뜻이다. 즉 상호 비교 가능하다는 것이다. 
+
+```java
+public static <E extends Comparable<E>> E max(Collections<E> c) {
+	if (c.isEmpty())
+		throw new IllegalArgumentException("컬렉션이 비어 있습니다");
+		
+	E result = null;
+	for(E e : c)
+		if(result == null || e.compareTo(result) > 0 )
+			result = Objects.requireNonNull(e);
+			
+	return result;
+}
+```
+
+재귀적 타입 한정은 훨씬 복잡해질 가능성이 있긴 하지만, 이번 아이템에 설명한 관용구, 여기에 와일드카드를 사용한 변형(item31)시뮬레이트한 셀프 타입 관용구(item2)를 
+이해하고 나면 실전에서 마주치는 대부분의 재귀적 타입 한정을 무리 없이 다룰 수 있을 것이다. 
